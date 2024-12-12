@@ -12,6 +12,7 @@ public class PersonController : MonoBehaviour
 
     private Vector2 endTouchPosition;
 
+
     private void Start()
     {
         Time.timeScale = 1.0f;
@@ -19,16 +20,20 @@ public class PersonController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
-            personDirection = Vector2.up;
-        else if (Input.GetKey(KeyCode.DownArrow))
-            personDirection = Vector2.down;
-        else if (Input.GetKey(KeyCode.LeftArrow))
-            personDirection = Vector2.left;
-        else if (Input.GetKey(KeyCode.RightArrow))
-            personDirection = Vector2.right;
+        if(WindowOnTriggerEnter.playerInTrigger)
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
+                personDirection = Vector2.up;
+            else if (Input.GetKey(KeyCode.DownArrow))
+                personDirection = Vector2.down;
+            else if (Input.GetKey(KeyCode.LeftArrow))
+                personDirection = Vector2.left;
+            else if (Input.GetKey(KeyCode.RightArrow))
+                personDirection = Vector2.right;
 
-        HandleTouchInput();
+            HandleTouchInput();
+        }
+        
 
         transform.Translate(personDirection * personSpeed * Time.deltaTime);
     }
